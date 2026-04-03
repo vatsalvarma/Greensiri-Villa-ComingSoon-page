@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body,html{
+            height:100%;
+            overflow:hidden;
+        }
+
+        .container{
+            position:relative;
+            height:100vh;
+            width:100%;
+            background:url('https://raw.githubusercontent.com/vatsalvarma/Greensiri-Residential-Coming-soon/refs/heads/main/bg.png') center/cover no-repeat;
+        }
+
+        /* blur overlay */
+        .container::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            backdrop-filter: blur(8px);
+            background:rgba(0,0,0,0.3);
+        }
+
+        .content{
+            position:relative;
+            z-index:2;
+            display:flex;
+            height:100%;
+            color:#fff;
+        }
+
+        .left, .right{
+            width:50%;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            padding:60px;
+        }
+
+        /* divider */
+        .divider{
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            width:2px;
+            height:60%;
+            background:rgba(255,255,255,0.4);
+            animation:growLine 2s ease forwards;
+        }
+
+        @keyframes growLine{
+            from{height:0}
+            to{height:60%}
+        }
+
+        .small-title{
+            letter-spacing:2px;
+            margin-bottom:10px;
+            opacity:0;
+            animation:fadeUp 1s ease forwards .5s;
+            margin-left: 270px;
+
+        }
+
+        .big{
+            font-size:70px;
+            font-weight:300;
+            line-height:1.1;
+
+        }
+
+        .big span{
+            display:block;
+            opacity:0;
+            transform:translateY(40px);
+            animation:fadeUp 1s ease forwards;
+            margin-left: 220px;
+        }
+
+        .big span:nth-child(1){animation-delay:.8s}
+        .big span:nth-child(2){animation-delay:1s}
+        .big span:nth-child(3){animation-delay:1.2s}
+
+        .sub{
+            margin-top:20px;
+            letter-spacing:2px;
+            opacity:0;
+            animation:fadeUp 1s ease forwards 1.4s;
+            margin-left: 290px;
+        }
+
+        @keyframes fadeUp{
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* radial lines */
+        .lines{
+            position:absolute;
+            width:300px;
+            height:300px;
+            top:90%;
+            left:55%;
+            transform:translate(-50%,-50%);
+        }
+
+        .lines span{
+            position:absolute;
+            width:2px;
+            height:40px;
+            background:#fff;
+            left:50%;
+            top:50%;
+            transform-origin:center -280px;
+            opacity:0;
+            animation:rotateLines 2s ease forwards;
+        }
+
+        .lines span:nth-child(n){
+            transform:rotate(calc(var(--i)*30deg));
+            animation-delay:calc(var(--i)*0.1s);
+        }
+
+        @keyframes rotateLines{
+            from{opacity:0; transform:rotate(calc(var(--i)*30deg)) scaleY(0)}
+            to{opacity:1; transform:rotate(calc(var(--i)*30deg)) scaleY(1)}
+        }
+
+        /* right side */
+        .desc{
+            max-width:500px;
+            font-size:14px;
+            line-height:1.6;
+            margin-bottom:30px;
+            opacity:0;
+            animation:fadeUp 1s ease forwards 1s;
+
+        }
+
+        .subscribe-title{
+            margin-bottom:10px;
+            font-weight:600;
+            opacity:0;
+            animation:fadeUp 1s ease forwards 1.2s;
+        }
+
+        .input-box{
+            display:flex;
+            border:1px solid rgba(255,255,255,0.5);
+            overflow:hidden;
+            opacity:0;
+            animation:fadeUp 1s ease forwards 1.4s;
+        }
+
+        .input-box input{
+            flex:1;
+            padding:12px;
+            background:transparent;
+            border:none;
+            color:#fff;
+            outline:none;
+        }
+
+        .input-box button{
+            background: #fff;   /* change to white */
+    color: #000;
+            border:none;
+            padding:12px 25px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .input-box button:hover{
+            background: green;
+        }
+
+        /* social */
+        .social{
+            margin-top:30px;
+            display:flex;
+            gap:15px;
+        }
+
+        .social i{
+            width:40px;
+            height:40px;
+            border:1px solid #fff;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            transition:.3s;
+            opacity:0;
+            transform:translateY(20px);
+        }
+
+        .social i:nth-child(1){animation:fadeUp .5s forwards 1.6s}
+        .social i:nth-child(2){animation:fadeUp .5s forwards 1.7s}
+        .social i:nth-child(3){animation:fadeUp .5s forwards 1.8s}
+        .social i:nth-child(4){animation:fadeUp .5s forwards 1.9s}
+        .social i:nth-child(5){animation:fadeUp .5s forwards 2s}
+        .social i:nth-child(6){animation:fadeUp .5s forwards 2.1s}
+
+        .social i:hover{
+            background:#fff;
+            color:#000;
+            transform:scale(1.2);
+        }
+
+        /* subtle floating animation */
+        .left, .right{
+            animation:float 6s ease-in-out infinite;
+        }
+
+        @keyframes float{
+            0%,100%{transform:translateY(0)}
+            50%{transform:translateY(-10px)}
+        }
+
+        /* responsive */
+        @media(max-width:768px){
+            .content{flex-direction:column}
+            .left,.right{width:100%;text-align:center}
+            .divider{display:none}
+            .lines{left:50%}
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="content">
+
+        <div class="left">
+            <div class="lines">
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+                <span style="--i:4"></span>
+                <span style="--i:5"></span>
+                <span style="--i:6"></span>
+                <span style="--i:7"></span>
+                <span style="--i:8"></span>
+                <span style="--i:9"></span>
+                <span style="--i:10"></span>
+                <span style="--i:11"></span>
+                <span style="--i:12"></span>
+            </div>
+
+            <div class="small-title">OUR NEW PROJECT</div>
+
+            <div class="big">
+                <span>COMING</span>
+                <span>SOON !</span>
+            </div>
+
+            <div class="sub">STAY TUNED !!!</div>
+        </div>
+
+        <div class="right">
+
+            <div class="desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+
+            <div class="subscribe-title">STAY IN TOUCH FOR THE UPDATES</div>
+
+            <div class="input-box">
+                <input type="text" placeholder="EMAIL ADDRESS">
+                <button>SUBSCRIBE</button>
+            </div>
+
+            <div class="social">
+                <i>f</i>
+                <i>ig</i>
+                <i>yt</i>
+                <i>p</i>
+                <i>in</i>
+                <i>wa</i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+</div>
+
+</body>
+</html>

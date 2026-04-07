@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -16,9 +18,9 @@
         }
 
         body,html{
-            height:100%;
-            overflow:hidden;
-        }
+    height:100%;
+    overflow-x:hidden; /* only hide horizontal scroll */
+}
 
         .container{
             position:relative;
@@ -194,6 +196,7 @@
 
         /* social */
         .social{
+           color: white;
             margin-top:30px;
             display:flex;
             gap:15px;
@@ -211,6 +214,7 @@
             transition:.3s;
             opacity:0;
             transform:translateY(20px);
+            color: white;
         }
 
         .social i:nth-child(1){animation:fadeUp .5s forwards 1.6s}
@@ -225,6 +229,10 @@
             color:#000;
             transform:scale(1.2);
         }
+        .social a{
+    text-decoration: none;
+    color: white;
+}
 
         /* subtle floating animation */
         .left, .right{
@@ -244,9 +252,253 @@
             .lines{left:50%}
         }
 
+          /* ================= GLASS NAV ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(12px, 1.5vh, 24px) clamp(24px, 4vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+        }
+
+        nav h2 { color: white; font-weight: 600; }
+
+        nav ul { display: flex; gap: clamp(16px, 2.5vw, 48px); list-style: none; }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(10px, 0.85vw, 15px);
+        }
+
+        .nav-logo img {
+            height: clamp(38px, 4.5vh, 66px);
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav-dark .nav-logo img { height: clamp(40px, 5vh, 72px); width: auto; }
+
+        .nav-logo img:hover { transform: scale(1.05); transition: 0.3s; }
+
+          /* --- Footer --- */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: #fff;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
+
+<nav>
+
+    <div class="nav-logo">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- MENU -->
+    <ul class="nav-menu">
+        <li><a href="#home" onclick="closeMenu()">HOME</a></li>
+        <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+        <li><a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/" onclick="closeMenu()">RESIDENTIALS</a></li>
+        <li><a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/" onclick="closeMenu()">VILLAS</a></li>
+        <li><a href="#">SHOT AT SITE</a></li>
+        <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
+        <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
+        <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
+    </ul>
+
+</nav>
 
 <div class="container">
 
@@ -281,7 +533,7 @@
         <div class="right">
 
             <div class="desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
             </div>
 
             <div class="subscribe-title">STAY IN TOUCH FOR THE UPDATES</div>
@@ -292,12 +544,17 @@
             </div>
 
             <div class="social">
-                <i>f</i>
-                <i>ig</i>
-                <i>yt</i>
-                <i>p</i>
-                <i>in</i>
-                <i>wa</i>
+                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                   target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
 
         </div>
@@ -307,6 +564,80 @@
     <div class="divider"></div>
 
 </div>
+
+<!-- --- Footer --- -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <span class="footer-bold">GREENSIRI INFRA LLP</span>
+            <p class="footer-text">
+                130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                YELAHANKA, BENGALURU - 64
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                <i class="fa-solid fa-phone"></i>
+                +91 95111 25552
+            </a>
+            <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+               style="color: white; text-decoration: none;">
+                <i class="fa-regular fa-envelope"></i>
+                contact@greensiri.in
+            </a>
+        </div>
+
+        <div class="footer-col">
+            <div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                     class="footer-logo">
+            </div>
+            <p class="footer-tagline"></p>
+        </div>
+
+        <div class="footer-col footer-subscribe">
+            <h5>DO YOU HAVE ANY QUERY?</h5>
+            <form class="subscribe-form">
+                <input type="email" placeholder="example@email.com" required
+                       oninvalid="this.setCustomValidity('please enter valid email address')"
+                       oninput="this.setCustomValidity('')">
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+            <div class="subscribe-note">
+                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+            </div>
+        </div>
+
+        <div class="footer-col footer-social">
+            <h5>SOCIAL MEDIA LINKS</h5>
+            <div class="footer-social-icons">
+                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                   target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            &copy; Copyright 2026
+            <span class="highlight">GREENSIRI PROPERTIES</span>.
+            All Rights Reserved |
+            Website Design by
+            <span class="highlight">PRIZMABRIXX</span>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>

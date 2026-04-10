@@ -1,258 +1,297 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        body,html{
-    height:100%;
-    overflow-x:hidden; /* only hide horizontal scroll */
-}
+        body,
+        html {
+            height: 100%;
+            overflow-x: hidden;
+        }
 
-        .container{
-            position:relative;
-            height:100vh;
-            width:100%;
-            background:url('https://raw.githubusercontent.com/vatsalvarma/Greensiri-Residential-Coming-soon/refs/heads/main/bg.png') center/cover no-repeat;
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: url('https://raw.githubusercontent.com/vatsalvarma/Greensiri-Residential-Coming-soon/refs/heads/main/bg.png') center/cover no-repeat;
         }
 
         /* blur overlay */
-        .container::after{
-            content:"";
-            position:absolute;
-            inset:0;
+        .container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
             backdrop-filter: blur(8px);
-            background:rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        .content{
-            position:relative;
-            z-index:2;
-            display:flex;
-            height:100%;
-            color:#fff;
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            height: 100%;
+            color: #fff;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
-        .left, .right{
-            width:50%;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            padding:60px;
+        .left,
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            animation: float 6s ease-in-out infinite;
         }
 
         /* divider */
-        .divider{
-            position:absolute;
-            left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-            width:2px;
-            height:60%;
-            background:rgba(255,255,255,0.4);
-            animation:growLine 2s ease forwards;
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.4);
+            animation: growLine 2s ease forwards;
+            z-index: 2;
         }
 
-        @keyframes growLine{
-            from{height:0}
-            to{height:60%}
+        @keyframes growLine {
+            from {
+                height: 0
+            }
+
+            to {
+                height: 60%
+            }
         }
 
-        .small-title{
-            letter-spacing:2px;
-            margin-bottom:10px;
-            opacity:0;
-            animation:fadeUp 1s ease forwards .5s;
+        .small-title {
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards .5s;
             margin-left: 270px;
-
         }
 
-        .big{
-            font-size:70px;
-            font-weight:300;
-            line-height:1.1;
-
+        .big {
+            font-size: clamp(40px, 5vw, 70px);
+            font-weight: 300;
+            line-height: 1.1;
         }
 
-        .big span{
-            display:block;
-            opacity:0;
-            transform:translateY(40px);
-            animation:fadeUp 1s ease forwards;
+        .big span {
+            display: block;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
             margin-left: 220px;
         }
 
-        .big span:nth-child(1){animation-delay:.8s}
-        .big span:nth-child(2){animation-delay:1s}
-        .big span:nth-child(3){animation-delay:1.2s}
+        .big span:nth-child(1) {
+            animation-delay: .8s
+        }
 
-        .sub{
-            margin-top:20px;
-            letter-spacing:2px;
-            opacity:0;
-            animation:fadeUp 1s ease forwards 1.4s;
+        .big span:nth-child(2) {
+            animation-delay: 1s
+        }
+
+        .big span:nth-child(3) {
+            animation-delay: 1.2s
+        }
+
+        .sub {
+            margin-top: 20px;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.4s;
             margin-left: 290px;
         }
 
-        @keyframes fadeUp{
-            to{
-                opacity:1;
-                transform:translateY(0);
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
         /* radial lines */
-        .lines{
-            position:absolute;
-            width:300px;
-            height:300px;
-            top:90%;
-            left:55%;
-            transform:translate(-50%,-50%);
+        .lines {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 90%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
-        .lines span{
-            position:absolute;
-            width:2px;
-            height:40px;
-            background:#fff;
-            left:50%;
-            top:50%;
-            transform-origin:center -280px;
-            opacity:0;
-            animation:rotateLines 2s ease forwards;
+        .lines span {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #fff;
+            left: 50%;
+            top: 50%;
+            transform-origin: center -280px;
+            opacity: 0;
+            animation: rotateLines 2s ease forwards;
         }
 
-        .lines span:nth-child(n){
-            transform:rotate(calc(var(--i)*30deg));
-            animation-delay:calc(var(--i)*0.1s);
+        .lines span:nth-child(n) {
+            transform: rotate(calc(var(--i)*30deg));
+            animation-delay: calc(var(--i)*0.1s);
         }
 
-        @keyframes rotateLines{
-            from{opacity:0; transform:rotate(calc(var(--i)*30deg)) scaleY(0)}
-            to{opacity:1; transform:rotate(calc(var(--i)*30deg)) scaleY(1)}
+        @keyframes rotateLines {
+            from {
+                opacity: 0;
+                transform: rotate(calc(var(--i)*30deg)) scaleY(0)
+            }
+
+            to {
+                opacity: 1;
+                transform: rotate(calc(var(--i)*30deg)) scaleY(1)
+            }
         }
 
         /* right side */
-        .desc{
-            max-width:500px;
-            font-size:14px;
-            line-height:1.6;
-            margin-bottom:30px;
-            opacity:0;
-            animation:fadeUp 1s ease forwards 1s;
-
+        .desc {
+            max-width: 500px;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1s;
         }
 
-        .subscribe-title{
-            margin-bottom:10px;
-            font-weight:600;
-            opacity:0;
-            animation:fadeUp 1s ease forwards 1.2s;
+        .subscribe-title {
+            margin-bottom: 10px;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.2s;
         }
 
-        .input-box{
-            display:flex;
-            border:1px solid rgba(255,255,255,0.5);
-            overflow:hidden;
-            opacity:0;
-            animation:fadeUp 1s ease forwards 1.4s;
+        .input-box {
+            display: flex;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.4s;
+            max-width: 400px;
+            width: 100%;
         }
 
-        .input-box input{
-            flex:1;
-            padding:12px;
-            background:transparent;
-            border:none;
-            color:#fff;
-            outline:none;
+        .input-box input {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            width: 100%;
         }
 
-        .input-box button{
-            background: #fff;   /* change to white */
-    color: #000;
-            border:none;
-            padding:12px 25px;
-            cursor:pointer;
-            transition:.3s;
+        .input-box button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: .3s;
         }
 
-        .input-box button:hover{
-            background:#c88c50;
+        .input-box button:hover {
+            background: #c88c50;
         }
 
         /* social */
-        .social{
-           color: white;
-            margin-top:30px;
-            display:flex;
-            gap:15px;
+        .social {
+            color: white;
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
         }
 
-        .social i{
-            width:40px;
-            height:40px;
-            border:1px solid #fff;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-            transition:.3s;
-            opacity:0;
-            transform:translateY(20px);
+        .social i {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .3s;
+            opacity: 0;
+            transform: translateY(20px);
             color: white;
         }
 
-        .social i:nth-child(1){animation:fadeUp .5s forwards 1.6s}
-        .social i:nth-child(2){animation:fadeUp .5s forwards 1.7s}
-        .social i:nth-child(3){animation:fadeUp .5s forwards 1.8s}
-        .social i:nth-child(4){animation:fadeUp .5s forwards 1.9s}
-        .social i:nth-child(5){animation:fadeUp .5s forwards 2s}
-        .social i:nth-child(6){animation:fadeUp .5s forwards 2.1s}
-
-        .social i:hover{
-            background:#fff;
-            color:#000;
-            transform:scale(1.2);
-        }
-        .social a{
-    text-decoration: none;
-    color: white;
-}
-
-        /* subtle floating animation */
-        .left, .right{
-            animation:float 6s ease-in-out infinite;
+        .social i:nth-child(1) {
+            animation: fadeUp .5s forwards 1.6s
         }
 
-        @keyframes float{
-            0%,100%{transform:translateY(0)}
-            50%{transform:translateY(-10px)}
+        .social i:nth-child(2) {
+            animation: fadeUp .5s forwards 1.7s
         }
 
-        /* responsive */
-        @media(max-width:768px){
-            .content{flex-direction:column}
-            .left,.right{width:100%;text-align:center}
-            .divider{display:none}
-            .lines{left:50%}
+        .social i:nth-child(3) {
+            animation: fadeUp .5s forwards 1.8s
         }
 
-          /* ================= GLASS NAV ================= */
+        .social i:nth-child(4) {
+            animation: fadeUp .5s forwards 1.9s
+        }
+
+        .social i:nth-child(5) {
+            animation: fadeUp .5s forwards 2s
+        }
+
+        .social i:nth-child(6) {
+            animation: fadeUp .5s forwards 2.1s
+        }
+
+        .social i:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.2);
+        }
+
+        .social a {
+            text-decoration: none;
+            color: white;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        /* ================= GLASS NAV ================= */
         nav {
             position: fixed;
             top: 0;
@@ -264,20 +303,24 @@
             align-items: center;
             z-index: 1000;
             background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border-bottom: none;
         }
 
-        nav h2 { color: white; font-weight: 600; }
-
-        nav ul { display: flex; gap: clamp(16px, 2.5vw, 48px); list-style: none; }
+        nav ul {
+            display: flex;
+            gap: clamp(16px, 2.5vw, 48px);
+            list-style: none;
+        }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             font-size: clamp(10px, 0.85vw, 15px);
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #c88c50;
         }
 
         .nav-logo img {
@@ -287,16 +330,38 @@
             transition: height 0.3s ease;
         }
 
-        .nav-dark .nav-logo img { height: clamp(40px, 5vh, 72px); width: auto; }
+        .nav-logo img:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
 
-        .nav-logo img:hover { transform: scale(1.05); transition: 0.3s; }
+        /* Hamburger Menu Styling */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
 
-          /* --- Footer --- */
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s ease;
+        }
+
+        /* --- Footer --- */
         footer {
             background-color: #0b0b0b;
             color: white;
             padding: 60px 8%;
             min-height: 30vh;
+        }
+
+        .footer-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         .footer-grid {
@@ -310,7 +375,7 @@
             flex: 1;
             min-width: 180px;
             padding: 15px 40px;
-            border-right: 2px solid #fff;
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -391,21 +456,24 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 100%;
+            max-width: 250px;
         }
 
         .subscribe-form input {
             background: transparent;
-            border: 1px solid #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
             padding: 8px 12px;
             color: white;
             font-size: 11px;
             border-radius: 4px;
+            outline: none;
         }
 
         .subscribe-form button {
             background: transparent;
             border: 1px solid #fff;
-            padding: 6px;
+            padding: 8px;
             font-size: 10px;
             font-weight: 600;
             color: #fff;
@@ -422,7 +490,7 @@
 
         .subscribe-note {
             font-size: 8px;
-            color: #fff;
+            color: rgba(255, 255, 255, 0.7);
             margin-top: 5px;
             white-space: nowrap;
         }
@@ -444,20 +512,21 @@
             justify-content: center;
             color: #fff;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .footer-social-icons a:hover {
             background: #fff;
             color: #000;
-            box-shadow: 0 0 0 1.5px #fff;
         }
 
         .footer-bottom {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .footer-bottom a {
@@ -469,177 +538,316 @@
             color: #fff;
         }
 
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ================= RESPONSIVE (MOBILE OPTIMIZATION) ================= */
+        @media(max-width:900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul.nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgba(11, 11, 11, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.4s ease;
+                padding-top: 60px;
+            }
+
+            nav ul.nav-menu.active {
+                right: 0;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+
+            .content {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .left {
+                position: relative;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 20px;
+                min-height: 55vh;
+                z-index: 1;
+            }
+
+            .right {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 20px;
+            }
+
+            /* -- THE FIX: Mathematical Centering of the Animation -- */
+            .lines {
+                top: 50%;
+                left: 50%;
+                /* * scale(0.45) shrinks the 560px circle to ~250px so it fits mobile screens.
+                 * The original lines rotate around a point 280px above them.
+                 * 280px * 0.45 scale = 126px offset.
+                 * We pull the div DOWN by exactly 126px so the pivot point lands EXACTLY at top: 50%.
+                 */
+                transform: translate(-50%, calc(-50% + 126px)) scale(0.45);
+                opacity: 1;
+                z-index: -1;
+            }
+
+            /* Enforce absolute centering of text to align with the circle */
+            .small-title {
+                margin-left: 0 !important;
+                text-align: center;
+            }
+
+            .big {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .big span {
+                margin-left: 0 !important;
+                text-align: center;
+            }
+
+            .sub {
+                margin-left: 0 !important;
+                text-align: center;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .subscribe-title,
+            .desc {
+                text-align: center;
+            }
+
+            .container {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 80px;
+            }
+
+            /* Footer Mobile fixes */
+            .footer-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .footer-col {
+                border-right: none;
+                padding: 0;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .footer-text,
+            .subscribe-note {
+                white-space: normal;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<nav>
-
-    <div class="nav-logo">
-        <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
-        </a>
-    </div>
-
-    <!-- HAMBURGER -->
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- MENU -->
-    <ul class="nav-menu">
-        <li><a href="#home" onclick="closeMenu()">HOME</a></li>
-        <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
-        <li><a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/" onclick="closeMenu()">RESIDENTIALS</a></li>
-        <li><a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/" onclick="closeMenu()">VILLAS</a></li>
-        <li><a href="#">SHOT AT SITE</a></li>
-        <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
-        <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
-        <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
-    </ul>
-
-</nav>
-
-<div class="container">
-
-    <div class="content">
-
-        <div class="left">
-            <div class="lines">
-                <span style="--i:1"></span>
-                <span style="--i:2"></span>
-                <span style="--i:3"></span>
-                <span style="--i:4"></span>
-                <span style="--i:5"></span>
-                <span style="--i:6"></span>
-                <span style="--i:7"></span>
-                <span style="--i:8"></span>
-                <span style="--i:9"></span>
-                <span style="--i:10"></span>
-                <span style="--i:11"></span>
-                <span style="--i:12"></span>
-            </div>
-
-            <div class="small-title">OUR NEW PROJECT</div>
-
-            <div class="big">
-                <span>COMING</span>
-                <span>SOON !</span>
-            </div>
-
-            <div class="sub">STAY TUNED !!!</div>
-        </div>
-
-        <div class="right">
-
-            <div class="desc">
-
-            </div>
-
-            <div class="subscribe-title">STAY IN TOUCH FOR THE UPDATES</div>
-
-            <div class="input-box">
-                <input type="text" placeholder="EMAIL ADDRESS">
-                <button>SUBSCRIBE</button>
-            </div>
-
-            <div class="social">
-                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
-                        class="fa-brands fa-youtube"></i></a>
-                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
-                        class="fa-brands fa-pinterest-p"></i></a>
-                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
-                   target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="divider"></div>
-
-</div>
-
-<!-- --- Footer --- -->
-<footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <span class="footer-bold">GREENSIRI INFRA LLP</span>
-            <p class="footer-text">
-                130/2, 3RD FLOOR, OMKARA BUILDING,<br>
-                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
-                YELAHANKA, BENGALURU - 64
-            </p>
-        </div>
-
-        <div class="footer-col">
-            <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
-                <i class="fa-solid fa-phone"></i>
-                +91 95111 25552
-            </a>
-            <a href="mailto:contact@greensiri.in" class="footer-contact-item"
-               style="color: white; text-decoration: none;">
-                <i class="fa-regular fa-envelope"></i>
-                contact@greensiri.in
-            </a>
-        </div>
-
-        <div class="footer-col">
-            <div>
+    <nav>
+        <div class="nav-logo">
+            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
                 <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
-                     class="footer-logo">
-            </div>
-            <p class="footer-tagline"></p>
+                    alt="Logo">
+            </a>
         </div>
 
-        <div class="footer-col footer-subscribe">
-            <h5>DO YOU HAVE ANY QUERY?</h5>
-            <form class="subscribe-form">
-                <input type="email" placeholder="example@email.com" required
-                       oninvalid="this.setCustomValidity('please enter valid email address')"
-                       oninput="this.setCustomValidity('')">
-                <button type="submit">SUBSCRIBE</button>
-            </form>
-            <div class="subscribe-note">
-                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
-            </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <div class="footer-col footer-social">
-            <h5>SOCIAL MEDIA LINKS</h5>
-            <div class="footer-social-icons">
-                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
-                        class="fa-brands fa-youtube"></i></a>
-                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
-                        class="fa-brands fa-pinterest-p"></i></a>
-                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
-                   target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" onclick="closeMenu()">HOME</a></li>
+            <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/"
+                    onclick="closeMenu()">RESIDENTIALS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/"
+                    onclick="closeMenu()">VILLAS</a></li>
+            <li><a href="#" onclick="closeMenu()">SHOT AT SITE</a></li>
+            <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/" onclick="closeMenu()">COMPANY</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/" onclick="closeMenu()">BLOGS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/" onclick="closeMenu()">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <div class="left">
+                <div class="lines">
+                    <span style="--i:1"></span>
+                    <span style="--i:2"></span>
+                    <span style="--i:3"></span>
+                    <span style="--i:4"></span>
+                    <span style="--i:5"></span>
+                    <span style="--i:6"></span>
+                    <span style="--i:7"></span>
+                    <span style="--i:8"></span>
+                    <span style="--i:9"></span>
+                    <span style="--i:10"></span>
+                    <span style="--i:11"></span>
+                    <span style="--i:12"></span>
+                </div>
+
+                <div class="small-title">OUR NEW PROJECT</div>
+
+                <div class="big">
+                    <span>COMING</span>
+                    <span>SOON !</span>
+                </div>
+
+                <div class="sub">STAY TUNED !!!</div>
+            </div>
+
+            <div class="right">
+                <div class="desc"></div>
+
+                <div class="subscribe-title">STAY IN TOUCH FOR THE UPDATES</div>
+
+                <div class="input-box">
+                    <input type="text" placeholder="EMAIL ADDRESS">
+                    <button>SUBSCRIBE</button>
+                </div>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="footer-bottom">
-        <p>
-            &copy; Copyright 2026
-            <span class="highlight">GREENSIRI PROPERTIES</span>.
-            All Rights Reserved |
-            Website Design by
-            <span class="highlight">PRIZMABRIXX</span>
-        </p>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                    <p class="footer-text">
+                        130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                        INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                        YELAHANKA, BENGALURU - 64
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <a href="tel:+919511125552" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-solid fa-phone"></i>
+                        +91 95111 25552
+                    </a>
+                    <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-regular fa-envelope"></i>
+                        contact@greensiri.in
+                    </a>
+                </div>
+
+                <div class="footer-col">
+                    <div>
+                        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                            class="footer-logo" alt="Logo">
+                    </div>
+                    <p class="footer-tagline"></p>
+                </div>
+
+                <div class="footer-col footer-subscribe">
+                    <h5>DO YOU HAVE ANY QUERY?</h5>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="example@email.com" required
+                            oninvalid="this.setCustomValidity('please enter valid email address')"
+                            oninput="this.setCustomValidity('')">
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <div class="subscribe-note">
+                        PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                    </div>
+                </div>
+
+                <div class="footer-col footer-social">
+                    <h5>SOCIAL MEDIA LINKS</h5>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                                class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                            target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919511125552?text=" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; Copyright 2026
+                    <span class="highlight">GREENSIRI PROPERTIES</span>.
+                    All Rights Reserved |
+                    Website Design by
+                    <span class="highlight">PRIZMABRIXX</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+    </script>
 
 </body>
+
 </html>
